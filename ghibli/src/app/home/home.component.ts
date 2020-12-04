@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculasService } from '../services/peliculas.service';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
+  initPeliculas: any;
+  constructor(private peliculasService: PeliculasService) { }
+ //En esta parte agrego codigo cuando la pagina se carga
   ngOnInit(): void {
-    
+    this.peliculasService.getPeliculas().subscribe(pel => {
+      this.initPeliculas = pel;
+      this.initPeliculas = this.initPeliculas.results;
+     });
   }
 
 }

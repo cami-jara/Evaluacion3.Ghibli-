@@ -29,8 +29,8 @@
             ],
             "styles": [
               "src/styles.scss"
-            ],
-            "scripts": []
+            ]
+          
           },
           "configurations": {
             "production": {
@@ -65,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ghibli:build"
+            "browserTarget": "ghibli:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -124,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "ghibli"
+  "defaultProject": "ghibli",
+  "cli": {
+    "analytics": "9ea754da-8d3d-4976-89ee-f0c43414f1f0"
+  }
 }
