@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pelicula } from '../model/pelicula';
 import { PeliculasService } from '../services/peliculas.service';
 
 @Component({
@@ -7,14 +8,16 @@ import { PeliculasService } from '../services/peliculas.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  initPeliculas: any;
-  constructor(private peliculasService: PeliculasService) { }
- //En esta parte agrego codigo cuando la pagina se carga
-  ngOnInit(): void {
-    this.peliculasService.getPeliculas().subscribe(pel => {
-      this.initPeliculas = pel;
-      this.initPeliculas = this.initPeliculas.results;
-     });
-  }
+  
+ pelicula:Pelicula[];
+ peliculas:Pelicula[];
+ constructor(private peliculaghibli: PeliculasService) {}
 
+ ngOnInit(): void {
+  this.peliculaghibli.getPelicula().subscribe(peliculas=>this.pelicula=peliculas);
+}
+/*mostrarPelicula(id){
+this.filmsghibli.getPelicula(id).subscribe(pelicula=>this.film=pelicula);
+console.log(this.film)
+}*/
 }
